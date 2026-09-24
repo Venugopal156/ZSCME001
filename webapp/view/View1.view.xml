@@ -1,0 +1,145 @@
+<mvc:View controllerName="com.zscme001.zscme001.controller.View1"
+   xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:uxap="sap.uxap"
+    xmlns:unified="sap.ui.unified"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:table="sap.ui.table"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <Page id="mainPage" title="{i18n>BulkUploadofCustomerMasterMaterialInfo}">
+        <content>
+            <IconTabBar id="idIconTabBar" expandable="false" class="sapUiResponsiveContentPadding" select=".onTabSelect">
+                <items>
+
+                    <IconTabFilter id="tabUpload" key="upload" text="{i18n>UploadTab}">
+
+
+                        <content>
+                            <HBox id="_IDGenHBox" width="100%" justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginTop">
+                              
+                                <unified:FileUploader id="fileUploader" width="250px" placeholder="{i18n>UploadFile}" fileType="XLSX" sameFilenameAllowed="true" mandatory="true"/>
+
+                                <Button id="btnUpload" enabled="true" text="{i18n>Execute}" type="Emphasized" press=".onUpload">
+                                </Button>
+
+                            </HBox>
+                           
+
+                        </content>
+
+                    </IconTabFilter>
+                    <IconTabFilter id="tabHistory" key="history" text="{i18n>DownloadTab}">
+                        <content>
+                            <form:SimpleForm id="_IDGenSimpleForm">
+                                <Label id="_IDGenLabel" text="{i18n>SoldtoParty}"/>
+                                <Input id="plant" value="{oInpValueModel>/SoldToPartyCSV}" width="30%" showValueHelp="true" valueHelpRequest="onValueHelpRequest"/>
+
+                                <Label id="_IDGenLabel2" text="{i18n>Vendor}"/>
+                                <Input id="product1" value="{oInpValueModel>/VendorCSV}" width="30%" showValueHelp="true" valueHelpRequest="onValueHelpRequest2"/>
+                                <Label id="_IDGenLabel3" text="{i18n>DCAT}"/>
+                                <Input id="dcat" value="{oInpValueModel>/DCat}" width="30%" showValueHelp="true" valueHelpRequest="onValueHelpRequest3"/>
+                                  <Label id="_IDGenLabel4" text="{i18n>Material}"/>
+                                <Input id="_IDGenInput1"  value="{oInpValueModel>/MaterialCSV}" width="30%" showValueHelp="true" valueHelpRequest="onValueHelpRequest4"/> 
+                                <Label id="_IDGenLabel1"  text="{i18n>CustomerMasterMaterial}"/>
+                                <Input id="_IDGenInput2" value="{oInpValueModel>/CustomerMasterMaterialCSV}" width="30%" showValueHelp="true" valueHelpRequest="onValueHelpRequest5" />
+
+                                <Label id="datepicker" text="{i18n>CreatedDateFrom}"/>
+                              
+
+                                <DateRangeSelection  id="createdDateFrom" dateValue="{oInpValueModel>/CreatedDateFrom}" secondDateValue="{oInpValueModel>/CreatedDateTo}" displayFormat="yyyy/MM/dd" valueFormat="yyyy/MM/dd" width="30%"/>
+                                <Label id="datepicker2" text="{i18n>UpdatedDateFrom}"></Label>
+                                 <DateRangeSelection  id="UpdatedDateFrom" dateValue="{oInpValueModel>/UpdatedDateFrom}" secondDateValue="{oInpValueModel>/UpdatedDateTo}" displayFormat="yyyy/MM/dd" valueFormat="yyyy/MM/dd" width="30%"/>
+                                
+                               
+
+                            </form:SimpleForm>
+                            <VBox id="_IDGenVBox">
+
+                                <HBox id="_IDGenHBox2" width="100%" justifyContent="End" alignItems="End" class="sapUiSmallMarginTop">
+                                 
+
+
+                                    <Button id="btnUpload1" enabled="true" text="{i18n>Download}" type="Emphasized" press=".onDownloadReport">
+                                       
+
+                                    </Button>
+
+
+
+                                </HBox>
+                           
+                            </VBox>
+                        </content>
+                    </IconTabFilter>
+
+                    <IconTabFilter id="tabResult" key="result" text="{i18n>ResultTab}">
+                        <content>
+                            <Table id="idTable" mode="None" items="{oResponseModel>/results}">
+
+                                <headerToolbar>
+                                    <Toolbar id="resultToolbar">
+                                        <Title id="resultTitle" text="" />
+                                        <ToolbarSpacer id="toolbarSpacer" />
+                                        
+                                        <Button id="btnDownload" text="{i18n>Download}" type="Emphasized" press=".onDownload" enabled="false"/>
+                                    </Toolbar>
+                                </headerToolbar>
+
+                                <columns>
+                                   
+                                    <Column id="colStatus">
+                                        <Text id="txtStatusHdr" text="{i18n>Status}" />
+                                    </Column>
+                                    <Column id="colTotalRecords">
+                                        <Text id="txtTotalRecordsHdr" text="{i18n>InProcess}" />
+                                    </Column>
+                                    <Column id="colSuccessCount">
+                                        <Text id="txtSuccessCountHdr" text="{i18n>Success}" />
+                                    </Column>
+                                    <Column id="colErrorCount">
+                                        <Text id="txtErrorCountHdr" text="{i18n>Failure}" />
+                                    </Column>
+                                      <Column id="_IDGenColumn" >
+                                        <Text id="_IDGenText1"  text="{i18n>UploadDateandTime}" />
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+                                    <ColumnListItem id="resultRow">
+                                        <cells>
+                                         
+                                            <Text id="txtStatus" text="{oResponseModel>StatusMessage}" />
+                                           
+                                             <Text id="txtTotalRecords" text="{oResponseModel>ProcessedCount}" />
+                                            
+                                                   <ObjectStatus id="objSuccessCount" text="{oResponseModel>SuccessCount}" state="Success" />
+                                            <ObjectStatus id="objErrorCount" text="{oResponseModel>ErrorCount}" state="Error" />
+                                           
+                                         
+<Text
+    id="txtUPLOAD_DATETIME"
+    text="{
+        parts: [
+            {path: 'oResponseModel>UploadDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'yyyy/MM/dd'}, pattern: 'yyyy/MM/dd'}},
+            {path: 'oResponseModel>UploadTime', type: 'sap.ui.model.type.Time', formatOptions: {source: {pattern: 'HHmmss'}, pattern: 'HH:mm:ss'}}
+        ],
+        formatter: '.formatter.combineDateTime'
+    }" />
+                                         
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+
+                            </Table>
+                        </content>
+                    </IconTabFilter>
+
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>

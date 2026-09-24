@@ -1,0 +1,114 @@
+{
+  "_version": "1.60.0",
+  "sap.app": {
+    "id": "com.zscme001.zscme001",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.30.0",
+      "toolsId": "11d83e35-7d17-4eca-bd06-76ab053d9246"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZSM028F01_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.38",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.zscme001.zscme001.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "com.zscme001.zscme001.view",
+        "async": true,
+        "viewPath": "com.zscme001.zscme001.view"
+      },
+      "routes": [
+        {
+          "name": "RouteView1",
+          "pattern": ":?query:",
+          "target": [
+            "TargetView1"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetView1": {
+          "id": "View1",
+          "name": "View1"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.zscme001.zscme001.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

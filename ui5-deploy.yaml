@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
+metadata:
+  name: com.zscme001.zscme001
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: s4ood
+          url: http://ood:443
+          client: '110'
+        app:
+          name: ZSCME001
+          description: Mass Upload Bulk
+          package: ZP_S_01
+          transport: OODK901710
+        exclude:
+          - /test/
+          - /localService/

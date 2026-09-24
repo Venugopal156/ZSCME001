@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+    xmlns:valuehelpdialog="sap.ui.comp.valuehelpdialog"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar">
+  
+  <valuehelpdialog:ValueHelpDialog id="DyanmicValueHelpDialog" ok="onValueHelpClose" cancel="onValueHelpClose" supportRanges="false" supportMultiselect="true" contentHeight="100%">
+        <valuehelpdialog:filterBar>
+            <fb:FilterBar id="_IDGenFilterBar" search="onSearch" advancedMode="true" isRunningInValueHelpDialog="true">
+               
+            </fb:FilterBar>
+        </valuehelpdialog:filterBar>
+    </valuehelpdialog:ValueHelpDialog>
+  
+  
+</core:FragmentDefinition>
+

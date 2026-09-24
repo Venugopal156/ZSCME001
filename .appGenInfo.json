@@ -1,0 +1,23 @@
+{
+  "generationParameters": {
+    "generationDate": "Thu Aug 06 2026 11:13:39 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "https://s4ood.dest/sap/opu/odata/sap/ZSM028F01_SRV",
+    "appName": "zscme001",
+    "appTitle": "Upload Functionality",
+    "appDescription": "An SAP Fiori application.",
+    "appNamespace": "com.zscme001",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.120.38",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.30.0",
+    "template": "Basic V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}
